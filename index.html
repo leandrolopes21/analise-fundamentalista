@@ -68,7 +68,7 @@
                 <span>Fluxo de Caixa</span>: mostra a entrada e saída de dinheiro. Uma empresa pode dar lucro no papel, mas quebrar se o caixa for mal gerido.
             </p>
             <p>
-                Ler esses relatórios regularmente te dá um raio-x completo da saúde da empresa.
+                *** Ler esses relatórios regularmente te dá um raio-x completo da saúde da empresa. ***
             </p>
         </div>
         <div id="indicador" class="conteiner">
@@ -83,16 +83,19 @@
                 <span>Margens de lucro</span>: percentual do lucro bruto, operacional e líquido sobre a receita total — como a empresa está evoluindo as suas margens.
             </p>
             <p>
-                <span>P/L (Preço/Lucro)</span>: indica quanto o mercado está pagando pelo lucro da empresa. Um P/L muito alto pode indicar que o mercado tem expectativas elevadas para os resultados futuros da companhia.
+                <a id="link1" onclick="calculo()"><span>P/L (Preço/Lucro)</span></a>: indica quanto o mercado está pagando pelo lucro da empresa. Um P/L muito alto pode indicar que o mercado tem expectativas elevadas para os resultados futuros da companhia.
+            </p>
+            <div id="area">
+
+            </div>
+            <p>
+                <a href=""><span>ROE (Retorno sobre o Patrimônio Líquido)</span></a>: mede a eficiência da empresa em gerar lucro com os recursos dos sócios.
             </p>
             <p>
-                <span>ROE (Retorno sobre o Patrimônio Líquido)</span>: mede a eficiência da empresa em gerar lucro com os recursos dos sócios.
+                <a href=""><span>ROIC: (Retorno sobre o Patrimônio Investido)</span></a>: a eficiência com que uma empresa gera lucro em relação ao capital investido.
             </p>
             <p>
-                <span>ROIC: (Retorno sobre o Patrimônio Investido)</span>: a eficiência com que uma empresa gera lucro em relação ao capital investido.
-            </p>
-            <p>
-                <span>Dívida Líquida/EBITDA</span>: mostra quanto tempo a empresa levaria para pagar suas dívidas com o lucro operacional.
+                <a href=""><span>Dívida Líquida/EBITDA</span></a>: mostra quanto tempo a empresa levaria para pagar suas dívidas com o lucro operacional.
             </p>
             <p>
                 Neste caso, há um disclaimer importante: não adianta olhar um indicador isolado. O ideal é analisar o conjunto e compará-los com empresas do mesmo setor.
@@ -137,8 +140,65 @@
         </div>
     </section>
     <footer>
-        <p class="paragrafo-rodape">Um abraço</p>
         <p class="paragrafo-rodape">&copy; <span>Leandro Lopes</span></p>
     </footer>
+
+    <script>
+
+        var div = document.getElementById('area');
+        div.style.backgroundColor = '#000';
+        div.style.color = '#E8703F';
+        var link1 = document.getElementById('link1');
+        var area;
+        var label;
+        var input1;
+        var input2;
+        var botaoResultado;
+        var resultadoDivisao;
+
+        function calculo() {
+
+            label = document.createElement('label');
+            label.setAttribute('id', 'label');
+            label.textContent = 'Preço/Lucro = preço da ação / lucro da empresa';
+            div.appendChild(label);
+            
+            input1 = document.createElement('input');
+            input1.setAttribute('type', 'number');
+            input1.setAttribute('id', 'numero1');
+            input1.setAttribute('placeholder', 'Preço da ação');
+            div.appendChild(input1);
+
+            input2 = document.createElement('input');
+            input2.setAttribute('type', 'number');
+            input2.setAttribute('id', 'numero2');
+            input2.setAttribute('placeholder', 'Lucro da empresa');
+            div.appendChild(input2);
+
+            botaoResultado = document.createElement('button');
+            botaoResultado.setAttribute('id', 'botaoResultado');
+            botaoResultado.setAttribute('onclick', calcularValores);
+            botaoResultado.textContent = 'Resultado';
+            div.appendChild(botaoResultado);
+
+            resultadoDivisao = document.createElement('p');
+            resultadoDivisao.setAttribute('id', 'pl');
+            div.appendChild(resultadoDivisao);
+
+            input1.focus();
+
+            /* botaoResultado.addEventListener('click', calcularValores); */
+        }
+
+        function calcularValores() {
+            
+            var val1 = Number(input1.value);
+            var val2 = Number(input2.value);
+            var resposta = val1 / val2;
+
+            resultadoDivisao.innerHTML = `Resposta ${resposta}`;
+        }
+
+    </script>
 </body>
 </html>

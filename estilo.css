@@ -77,6 +77,29 @@
     padding: 15px 20px;
 }
 
+/* Os links são botões que criam área de cálculo */
+/*-----------------------------------------------*/
+.conteiner p a {
+    text-decoration: none;
+}
+
+.conteiner p a:hover {
+    border-radius: 6px;
+    padding: 3px;
+    background-color: #5A7D77;
+    color: #fff;
+}
+/*-----------------------------------------------*/
+
+#label {
+    width: 100px;
+    padding: 0 5px;
+}
+
+#numero1,
+#numero2
+{width: 150px; margin: 0 5px; padding: 2px; text-align: center;}
+
 .conteiner p span {
     font-weight: bold;
 }
